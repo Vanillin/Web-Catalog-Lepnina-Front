@@ -1,0 +1,283 @@
+@font-face {
+  font-family: "AlexBrush";
+  src: url("../fonts/AlexBrush.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Kurale";
+  src: url("../fonts/Kurale.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+ul {
+  list-style: none;
+}
+.name-logo {
+  font-family: "AlexBrush";
+}
+p,
+a {
+  font-family: "Kurale";
+}
+a {
+  text-decoration: none;
+}
+
+.screen {
+  aspect-ratio: 2/1;
+  position: relative;
+}
+.flex-spacebetween {
+  display: flex;
+  justify-content: space-between;
+}
+
+header li {
+  margin: 0.7em;
+}
+header hr {
+  size: 2;
+  margin-top: 0.2em;
+  margin-bottom: 0.5em;
+}
+.background-image {
+  width: 100%;
+}
+.background-logo {
+  width: 54%;
+  margin-inline: 20%;
+  margin-top: 2em;
+  padding: 2%;
+  padding-inline: 3%;
+  position: absolute;
+  top: 0;
+  border-radius: 40px / 40px;
+}
+
+.logo-top {
+  align-items: center;
+}
+.contacts-logo {
+  width: 150px;
+}
+.logo-names {
+  padding-left: 5%;
+}
+.name-logo {
+  font-size: 3.8em;
+}
+
+.menu {
+  margin-inline: 3em;
+}
+
+#review {
+  height: 100%;
+  align-items: center;
+  padding: 1%;
+  padding-inline: 5%;
+}
+.elements-review {
+  align-items: center;
+  height: 100%;
+  width: 90%;
+  margin-inline: 5%;
+  border-radius: 100px / 100px;
+}
+.element-review {
+  margin: 1em;
+  height: 90%;
+  width: 100%;
+}
+.picture-section {
+  width: 100%;
+  height: 80%;
+  position: relative;
+}
+.img-review {
+  position: absolute;
+  aspect-ratio: 3/2;
+  border-radius: 100px / 100px;
+}
+.center-img {
+  top: 0;
+  left: 20%;
+  height: 100%;
+  z-index: 2;
+}
+.left-img {
+  top: 15%;
+  left: 5%;
+  height: 70%;
+  z-index: 1;
+}
+.right-img {
+  top: 15%;
+  left: 55%;
+  height: 70%;
+  z-index: 1;
+}
+.text-section {
+  font-size: 2em;
+  margin: 0.5em;
+  margin-inline: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.left-button-slide,
+.right-button-slide {
+  display: flex;
+  position: absolute;
+  top: 50%;
+  height: 50px;
+  font-size: 3em;
+  border: none;
+  background-color: transparent;
+}
+.left-button-slide {
+  left: 5%;
+}
+.right-button-slide {
+  right: 5%;
+}
+
+.catalog {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 2%;
+  margin-inline: 6%;
+  margin-bottom: 5%;
+}
+.element-sections {
+  margin: 3%;
+  position: relative;
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 25px;
+}
+.element-sections > img {
+  width: 100%;
+  aspect-ratio: 3/2;
+  border-radius: 17px;
+}
+.element-sections > a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+}
+.element-sections > p {
+  font-size: 2em;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  display: block;
+}
+.element-sections:hover > img {
+  opacity: 60%;
+}
+
+footer {
+  width: 85%;
+  padding: 1%;
+  padding-left: 10%;
+  padding-right: 5%;
+  align-items: center;
+}
+footer li {
+  margin: 1em;
+  font-size: 1.1em;
+}
+.footer-but-up > a {
+  font-size: 3em;
+  display: block;
+  padding: 0.4em;
+  padding-top: 0;
+  border-radius: 30%;
+}
+
+.in-progress {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.in-progress > p {
+  padding-bottom: 1em;
+  font-size: 1.1em;
+}
+
+@media (max-width: 1000px) {
+  .name-logo-under {
+    display: none;
+  }
+  .catalog {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .background-logo {
+    width: 74%;
+    margin-inline: 10%;
+    padding: 3%;
+  }
+}
+
+@media (max-width: 800px) {
+  .background-image,
+  .footer-but-up,
+  header hr,
+  .menu,
+  #about-us {
+    display: none;
+  }
+  .background-logo {
+    position: static;
+    width: 86%;
+    padding-inline: 7%;
+    margin: 0;
+    border-radius: 0 / 0;
+  }
+  .element-sections > img {
+    opacity: 60%;
+  }
+  .element-sections > p {
+    font-size: 1.5em;
+  }
+  .logo-names {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 550px) {
+  #bottom,
+  .in-progress,
+  #review {
+    display: none;
+  }
+  .catalog {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .background-logo {
+    width: 90%;
+    padding: 5%;
+  }
+  .image-logo {
+    height: 100px;
+  }
+  .name-logo {
+    font-size: 3em;
+  }
+}
+
+@media (max-width: 350px) {
+  .name-logo {
+    font-size: 2.5em;
+  }
+}

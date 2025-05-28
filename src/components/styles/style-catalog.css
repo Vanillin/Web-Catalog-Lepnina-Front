@@ -1,0 +1,104 @@
+@font-face {
+  font-family: "Kurale";
+  src: url("../fonts/Kurale.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+p,
+a {
+  font-family: "Kurale";
+}
+
+a {
+  text-decoration: none;
+}
+
+.body-flex {
+  display: flex;
+}
+
+.nav-top {
+  padding: 1.5em;
+  margin-bottom: 1em;
+  display: none;
+}
+
+.nav-top-body {
+  display: none;
+}
+
+.nav-top:hover .nav-top-body {
+  display: block;
+}
+
+.nav-left {
+  margin-top: 1em;
+  margin-left: 1em;
+  padding: 2em;
+  display: block;
+  border-radius: 15px;
+  position: sticky;
+  top: 16px;
+}
+
+.nav-left p,
+.nav-top p {
+  font-size: 2em;
+}
+
+.nav-left a,
+.nav-top a {
+  font-size: 1.5em;
+}
+
+.nav-left li,
+.nav-top li {
+  padding: 0.2em;
+}
+
+.nav-left hr,
+.nav-top hr {
+  margin: 1.5em;
+  margin-inline: 0;
+}
+
+.grid {
+  display: grid;
+  margin-inline: 1em;
+}
+
+.element-grid {
+  margin: 1em;
+  padding: 1em;
+  border-radius: 15px;
+}
+
+.element-grid > img {
+  width: 100%;
+}
+
+.element-grid > p {
+  font-size: 1.5em;
+  padding-bottom: 0.5em;
+}
+
+.parameters-element {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.parameters-element > p {
+  display: inline;
+  font-size: 1.2em;
+}
