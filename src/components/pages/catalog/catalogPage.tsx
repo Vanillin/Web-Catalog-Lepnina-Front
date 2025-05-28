@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import ViewCorner from "./script-corner";
 
 export default function MainPage() {
   return (
@@ -75,11 +76,7 @@ export default function MainPage() {
             </ul>
           </nav>
         </div>
-        <div className="grid" id="grid">
-          {/* <script type="text/javascript" src="main/scripts/script-cornices.js">
-            {" "}
-          </script> */}
-        </div>
+        <ViewCorner />
       </div>
     </body>
   );

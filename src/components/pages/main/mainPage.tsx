@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 //import { Button, Grid, Avatar, Typography } from '@mui/material';
-import backimage from "../images/background-image.jpg";
-import navcorner from "../images/navigation/corner.png";
-import navcornice from "../images/navigation/cornice.png";
-import navdesigner from "../images/navigation/designer.png";
-import navmolding from "../images/navigation/molding.png";
+import backimage from "../../images/background-image.jpg";
+import navcorner from "../../images/navigation/corner.png";
+import navcornice from "../../images/navigation/cornice.png";
+import navdesigner from "../../images/navigation/designer.png";
+import navmolding from "../../images/navigation/molding.png";
 
 export default function MainPage() {
   return (
