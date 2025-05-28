@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function MainPage() {
   return (
     <body className="backcolor-gray">
@@ -7,32 +9,30 @@ export default function MainPage() {
           <hr className="color-white" />
           <ul>
             <li>
-              <a className="color-white hover-ligthorange" href="index.html">
+              <Link to="/" className="color-white hover-ligthorange">
                 Главная
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="color-orange" href="cornices.html">
-                Карнизы
-              </a>
+              <a className="color-orange">Карнизы</a>
             </li>
             <li>
-              <a className="color-white hover-ligthorange" href="moldings.html">
-                Молдинги
-              </a>
+              {/* <a className="color-white hover-ligthorange" href="moldings.html"> */}
+              Молдинги
+              {/* </a> */}
             </li>
             <li>
-              <a
+              {/* <a
                 className="color-white hover-ligthorange"
                 href="designers.html"
-              >
-                Декоративные
-              </a>
+              > */}
+              Декоративные
+              {/* </a> */}
             </li>
             <li>
-              <a className="color-white hover-ligthorange" href="corner.html">
-                Угловые
-              </a>
+              {/* <a className="color-white hover-ligthorange" href="corner.html"> */}
+              Угловые
+              {/* </a> */}
             </li>
           </ul>
         </div>
@@ -44,35 +44,33 @@ export default function MainPage() {
             <hr className="color-white" />
             <ul>
               <li>
-                <a className="color-white hover-ligthorange" href="index.html">
+                <Link to="/" className="color-white hover-ligthorange">
                   Главная
-                </a>
+                </Link>
               </li>
               <li>
-                <a className="color-orange" href="cornices.html">
-                  Карнизы
-                </a>
+                <a className="color-orange">Карнизы</a>
               </li>
               <li>
-                <a
+                {/* <a
                   className="color-white hover-ligthorange"
                   href="moldings.html"
-                >
-                  Молдинги
-                </a>
+                > */}
+                Молдинги
+                {/* </a> */}
               </li>
               <li>
-                <a
+                {/* <a
                   className="color-white hover-ligthorange"
                   href="designers.html"
-                >
-                  Декоративные
-                </a>
+                > */}
+                Декоративные
+                {/* </a> */}
               </li>
               <li>
-                <a className="color-white hover-ligthorange" href="corner.html">
-                  Угловые
-                </a>
+                {/* <a className="color-white hover-ligthorange" href="corner.html"> */}
+                Угловые
+                {/* </a> */}
               </li>
             </ul>
           </nav>

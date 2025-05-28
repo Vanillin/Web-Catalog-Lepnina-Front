@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 //import { Button, Grid, Avatar, Typography } from '@mui/material';
 import backimage from "../images/background-image.jpg";
 import navcorner from "../images/navigation/corner.png";
@@ -88,7 +89,7 @@ export default function MainPage() {
           <div className="element-sections backcolor-darkgray">
             <img src={navcornice} alt="Карнизы" />
             <p className="color-white">Кaрнизы</p>
-            {/* <a href="cornices.html"></a> */}
+            <Link to="/catalog"></Link>
           </div>
           <div className="element-sections backcolor-darkgray">
             <img src={navmolding} alt="Молдинги" />
@@ -133,9 +134,9 @@ export default function MainPage() {
               <p className="color-orange">Навигация</p>
             </li>
             <li>
-              {/* <a className="color-white hover-ligthorange" href="cornices.html"> */}
-              Карнизы
-              {/* </a> */}
+              <Link to="/catalog" className="color-white hover-ligthorange">
+                Карнизы
+              </Link>
             </li>
             <li>
               {/* <a className="color-white hover-ligthorange" href="moldings.html"> */}
