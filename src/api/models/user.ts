@@ -1,7 +1,7 @@
 import { Roles } from "./roles";
 import { PictureFile } from "./pictureFile";
 
-export type UserDto = {
+export type User = {
   id?: number;
   name?: string;
   email?: string;

@@ -70,6 +70,53 @@ export default function MainPage() {
         </div>
       </header>
 
+{/*  <section id="review" className="screen backcolor-darkgray">
+
+        <button className="left-button-slide color-white" onclick="showPreviousSlide()" aria-label="Посмотреть предыдущий слайд">&lt;</button>
+        <div className="elements-review flex-spacebetween backcolor-gray">
+
+            <div className="element-review">                
+                <div id="picture-section" className="picture-section">
+                </div>
+                <div id="text-section" className="text-section color-white">
+                </div>
+            </div>
+
+            <script type="text/javascript" src="main/scripts/script-reviews.js"> </script>
+        </div>
+        <button className="right-button-slide color-white" onclick="showNextSlide()" aria-label="Посмотреть следующий слайд">&gt;</button>
+        <script type="text/javascript" src="main/scripts/script-slider.js" ></script>
+    </section> */}
+    
+      <section id="catalog">
+        <div className="catalog">
+          <div >
+            <div className="element-sections first-element backcolor-darkgray">
+              <img src={navcornice} alt="Карнизы" />
+              <p className="color-white">Карнизы</p>
+            </div>
+            <div className="element-sections second-element backcolor-darkgray">
+              <img src={navmolding} alt="Молдинги" />
+              <p className="color-white">Молдинги</p>
+            </div>
+            <div className="element-sections third-element backcolor-darkgray">
+              <img src={navcorner} alt="Угловые" />
+              <p className="color-white">Угловые</p>
+            </div>
+            <div className="element-sections four-element backcolor-darkgray">
+              <img src={navdesigner} alt="Декоративные" />
+              <p className="color-white">Декоративные</p>
+            </div>
+          </div>
+          <div>
+            <div className="catalog-but backcolor-darkgray">              
+              <p className="color-white">В каталог</p>
+              <Link to="/catalog"></Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    
       {/* <section id="about-us" class="screen">
         <div class="about-us flex-spacebetween">
             <div class="text-section color-white">
@@ -84,49 +131,6 @@ export default function MainPage() {
         </div>
     </section>  */}
 
-      <section id="catalog">
-        <div className="catalog">
-          <div className="element-sections backcolor-darkgray">
-            <img src={navcornice} alt="Карнизы" />
-            <p className="color-white">Кaрнизы</p>
-            <Link to="/catalog"></Link>
-          </div>
-          <div className="element-sections backcolor-darkgray">
-            <img src={navmolding} alt="Молдинги" />
-            <p className="color-white">Молдинги</p>
-            {/* <a href="moldings.html"></a> */}
-          </div>
-          <div className="element-sections backcolor-darkgray">
-            <img src={navcorner} alt="Угловые" />
-            <p className="color-white">Угловые</p>
-            {/* <a href="corner.html"></a> */}
-          </div>
-          <div className="element-sections backcolor-darkgray">
-            <img src={navdesigner} alt="Декоративные" />
-            <p className="color-white">Декоративные</p>
-            {/* <a href="designers.html"></a> */}
-          </div>
-        </div>
-      </section>
-      {/* <!-- 
-    <section id="review" class="screen backcolor-darkgray">
-
-        <button class="left-button-slide color-white" onclick="showPreviousSlide()" aria-label="Посмотреть предыдущий слайд">&lt;</button>
-        <div class="elements-review flex-spacebetween backcolor-gray">
-
-            <div class="element-review">                
-                <div id="picture-section" class="picture-section">
-                </div>
-                <div id="text-section" class="text-section color-white">
-                </div>
-            </div>
-
-            <script type="text/javascript" src="main/scripts/script-reviews.js"> </script>
-        </div>
-        <button class="right-button-slide color-white" onclick="showNextSlide()" aria-label="Посмотреть следующий слайд">&gt;</button>
-        <script type="text/javascript" src="main/scripts/script-slider.js" ></script>
-    </section> 
-    --> */}
       <footer className="backcolor-darkgray flex-spacebetween" id="bottom">
         <div>
           <ul>
