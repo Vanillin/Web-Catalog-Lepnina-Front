@@ -1,4 +1,5 @@
 import { User } from "../../../api/models/user";
+import { Link } from "react-router-dom";
 
 export type UserProps = {
   user: User;
@@ -11,7 +12,9 @@ export default function UserInfo({ user }: UserProps) {
         <hr className="color-white" />
         <ul>
           <li>
-            <a className="color-white hover-ligthorange">Изменить</a>
+            <Link to="/options" className="color-white hover-ligthorange">
+              Настройки
+            </Link>
           </li>
           <li>
             <a className="color-white hover-ligthorange">Избранное</a>
