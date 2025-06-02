@@ -5,6 +5,7 @@ import CatalogPage from "./components/pages/catalog/catalogPage";
 import OptionsPage from "./components/pages/options/optionsPage";
 import LoginPage from "./components/pages/login/loginPage";
 import RegisterPage from "./components/pages/register/registerPage";
+import LogoutPage from "./components/pages/logout/logoutPage";
 import { ThemeProvider } from "@mui/material";
 import { theme } from "./theme";
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="/options" element={<OptionsPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/logout" element={<LogoutPage />} />
         </Routes>
       </Router>
     </ThemeProvider>
