@@ -1,0 +1,53 @@
+.element-grid>img {
+    aspect-ratio: 2/1;
+}
+
+.grid {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+@media (max-width: 2000px) {
+
+    .grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+}
+
+@media (max-width: 1700px) {
+
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+@media (max-width: 1300px) {
+
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 1000px) {
+
+    .grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .nav-left {
+        display: none;
+    }
+    .nav-top {
+        display: block;
+    }
+    .grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+}

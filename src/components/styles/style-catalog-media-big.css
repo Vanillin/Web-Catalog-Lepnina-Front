@@ -1,0 +1,37 @@
+.element-grid>img {
+    aspect-ratio: 7/2;
+}
+
+.grid {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 1600px) {
+
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 1100px) {
+
+    .grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .nav-left {
+        display: none;
+    }
+    .nav-top {
+        display: block;
+    }
+    .grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+}
