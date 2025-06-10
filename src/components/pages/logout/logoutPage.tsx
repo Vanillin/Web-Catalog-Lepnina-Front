@@ -1,11 +1,4 @@
-import { Link } from "react-router-dom";
-import { User } from "../../../api/models/user";
-import { Roles } from "../../../api/models/roles";
-import { PictureFile } from "../../../api/models/pictureFile";
-
-export default function CatalogPage() {
-
-
+export default function LogoutPage() {
   return (
     <body className="backcolor-gray">
       <nav className="nav-left backcolor-darkgray">

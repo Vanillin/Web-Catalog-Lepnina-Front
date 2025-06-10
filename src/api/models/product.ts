@@ -1,6 +1,3 @@
-import { Section } from "./section";
-import { PictureFile } from "./pictureFile";
-
 export type Product = {
   id?: number;
   length?: number;
@@ -8,6 +5,6 @@ export type Product = {
   wigth?: number;
   price?: number;
   discount?: number;
-  pictureFile?: PictureFile;
-  section?: Section;
+  pictureFile?: number;
+  section?: number;
 };
