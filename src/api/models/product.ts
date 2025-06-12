@@ -2,9 +2,9 @@ export type Product = {
   id?: number;
   length?: number;
   height?: number;
-  wigth?: number;
+  width?: number;
   price?: number;
   discount?: number;
-  pictureFile?: number;
-  section?: number;
+  pictureFileId?: number;
+  sectionId?: number;
 };

@@ -5,10 +5,7 @@ import CatalogElement from "./catalogElement";
 import { Product } from "../../../api/models/product";
 import { Section } from "../../../api/models/section";
 
-import {
-  useProductsBySectionMutation,
-  useProductsByFavoriteMutation,
-} from "../../../api/slices/productApiSlice";
+import { useProductCatalogQuery } from "../../../api/slices/productApiSlice";
 import { useUserInfoQuery } from "../../../api/slices/userApiSlice";
 import { useSectionsAllQuery } from "../../../api/slices/sectionApiSlice";
 
@@ -41,6 +38,11 @@ export function UserInfo(input: { handleClick: () => Promise<void> }) {
         <hr className="color-white" />
         <ul>
           <li>
+            <Link to="/logout" className="color-white hover-ligthorange">
+              Выйти
+            </Link>
+          </li>
+          <li>
             <Link to="/options" className="color-white hover-ligthorange">
               Настройки
             </Link>
@@ -62,17 +64,23 @@ export function UserInfo(input: { handleClick: () => Promise<void> }) {
 export default function CatalogPage() {
   const { data: sections } = useSectionsAllQuery({});
 
-  const [products, setObjects] = useState<Product[]>();
+  const [idSection, changeSection] = useState<number>(0);
+  const [isFavorite, changeFavorite] = useState<boolean>(false);
 
-  const [updateProducts] = useProductsBySectionMutation();
-  const [updateFavoriteProducts] = useProductsByFavoriteMutation();
+  const { data: products, refetch } = useProductCatalogQuery({
+    req: { id: idSection, isFavorite: isFavorite },
+  });
 
   const handleSectionClick = async (input: { id: number }) => {
-    setObjects(await updateProducts({ req: { id: input.id } }).unwrap());
+    changeSection(input.id);
+    changeFavorite(false);
+    refetch();
   };
 
   const handleFavoriteClick = async () => {
-    setObjects(await updateFavoriteProducts({}).unwrap());
+    changeSection(0);
+    changeFavorite(true);
+    refetch();
   };
 
   return (
@@ -118,6 +126,7 @@ export default function CatalogPage() {
               {sections?.map((prod: Section) => (
                 <li>
                   <p
+                    key={prod.id}
                     className="color-white hover-ligthorange"
                     onClick={() => handleSectionClick({ id: prod.id! })}
                   >
@@ -130,7 +139,9 @@ export default function CatalogPage() {
         </div>
         <div className="grid" id="grid">
           {/* {isLoading && <CircularProgress />} */}
-          {products?.map((prod: Product) => <CatalogElement prod={prod} />)}
+          {products?.map((prod: Product) => (
+            <CatalogElement key={prod.id} prod={prod} />
+          ))}
         </div>
       </div>
     </body>

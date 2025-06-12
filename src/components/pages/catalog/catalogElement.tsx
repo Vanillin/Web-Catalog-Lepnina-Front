@@ -17,7 +17,7 @@ export default function CatalogElement(input: { prod: Product }) {
       </div>
       <div className="parameters-element color-white">
         <p>Ширина по потолку</p>
-        <p>{input.prod.wigth} мм</p>
+        <p>{input.prod.width} мм</p>
       </div>
       <div className="parameters-element color-white">
         <p>Высота по стене</p>

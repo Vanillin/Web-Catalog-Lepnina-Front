@@ -5,7 +5,7 @@ import {
   useFavoriteCreateMutation,
   useFavoriteDeleteMutation,
 } from "../../../api/slices/favoriteApiSlice";
-import { useProductsByFavorite2Query } from "../../../api/slices/productApiSlice";
+import { useProductCatalogQuery } from "../../../api/slices/productApiSlice";
 import { useUserInfoQuery } from "../../../api/slices/userApiSlice";
 
 function FavoriteBtn(input: { product: Product }) {
@@ -22,7 +22,7 @@ function FavoriteBtn(input: { product: Product }) {
     data: favoritesProduct,
     isLoading: isFavoritesLoading,
     error: favoritesError,
-  } = useProductsByFavorite2Query({});
+  } = useProductCatalogQuery({ req: { id: 0, isFavorite: true } });
 
   const [addFavorite, { isLoading: isAdding }] = useFavoriteCreateMutation();
   const [removeFavorite, { isLoading: isRemoving }] =
@@ -42,7 +42,7 @@ function FavoriteBtn(input: { product: Product }) {
       if (isFavorited) {
         await removeFavorite({ req: favorite }).unwrap();
       } else {
-        await addFavorite(favorite).unwrap();
+        await addFavorite({ req: favorite }).unwrap();
       }
     } catch (e) {
       console.error("Ошибка при обновлении избранного:", e);

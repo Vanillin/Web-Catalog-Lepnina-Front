@@ -12,30 +12,16 @@ export type DeleteFavoriteResponse = boolean;
 
 export const favoriteApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    // getPost: builder.query<Favorite, { id: number }>({
-    //   query: ({ id }) => `/post/${id}`,
-    // }),
-
-    // favoritesByUser: builder.query<
-    //   GetByUserFavoriteResponse,
-    //   { req: GetByUserFavoriteRequest }
-    // >({
-    //   query: ({ req }) => ({
-    //     url: `/Favorite/${req.idUser}`,
-    //     method: "GET",
-    //   }),
-    //   providesTags: ["Favorite"],
-    // }),
-
-    favoriteCreate: builder.mutation<PostFavoriteResponse, PostFavoriteRequest>(
-      {
-        query: () => ({
-          url: "/Favorites",
-          method: "POST",
-        }),
-        invalidatesTags: ["Favorite"],
-      }
-    ),
+    favoriteCreate: builder.mutation<
+      PostFavoriteResponse,
+      { req: PostFavoriteRequest }
+    >({
+      query: ({ req }) => ({
+        url: `/Favorites/${req.idUser}/${req.idProduct}`,
+        method: "POST",
+      }),
+      invalidatesTags: ["Favorite"],
+    }),
     favoriteDelete: builder.mutation<
       DeleteFavoriteResponse,
       { req: DeleteFavoriteRequest }
@@ -49,8 +35,5 @@ export const favoriteApiSlice = apiSlice.injectEndpoints({
   }),
 });
 
-export const {
-  // useFavoritesByUserQuery,
-  useFavoriteCreateMutation,
-  useFavoriteDeleteMutation,
-} = favoriteApiSlice;
+export const { useFavoriteCreateMutation, useFavoriteDeleteMutation } =
+  favoriteApiSlice;
