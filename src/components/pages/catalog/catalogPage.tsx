@@ -5,11 +5,14 @@ import CatalogElement from "./catalogElement";
 import { Product } from "../../../api/models/product";
 import { Section } from "../../../api/models/section";
 
-import { useProductsBySectionQuery } from "../../../api/slices/productApiSlice";
+import {
+  useProductsBySectionMutation,
+  useProductsByFavoriteMutation,
+} from "../../../api/slices/productApiSlice";
 import { useUserInfoQuery } from "../../../api/slices/userApiSlice";
 import { useSectionsAllQuery } from "../../../api/slices/sectionApiSlice";
 
-export function UserInfo() {
+export function UserInfo(input: { handleClick: () => Promise<void> }) {
   const { data: user, isError } = useUserInfoQuery({});
 
   if (isError) {
@@ -45,7 +48,7 @@ export function UserInfo() {
           <li>
             <p
               className="color-white hover-ligthorange"
-              //onClick={() => updateProducts({ id: user?.id!, favor: true })}
+              onClick={() => input.handleClick()}
             >
               Избранное
             </p>
@@ -61,17 +64,21 @@ export default function CatalogPage() {
 
   const [products, setObjects] = useState<Product[]>();
 
-  const updateProducts = (input: { id: number; favor: boolean }) => {
-    //const { data: products } = useProductsBySectionQuery({
-    //  req: { id: input.id },
-    //});
-    //setObjects(products);
+  const [updateProducts] = useProductsBySectionMutation();
+  const [updateFavoriteProducts] = useProductsByFavoriteMutation();
+
+  const handleSectionClick = async (input: { id: number }) => {
+    setObjects(await updateProducts({ req: { id: input.id } }).unwrap());
+  };
+
+  const handleFavoriteClick = async () => {
+    setObjects(await updateFavoriteProducts({}).unwrap());
   };
 
   return (
     <body className="backcolor-gray">
       <nav className="nav-top backcolor-darkgray">
-        <UserInfo />
+        <UserInfo handleClick={handleFavoriteClick} />
         <hr className="color-white" />
         <p className="color-white">Навигация</p>
         <hr className="color-white" />
@@ -86,7 +93,7 @@ export default function CatalogPage() {
               <li>
                 <p
                   className="color-white hover-ligthorange"
-                  onClick={() => updateProducts({ id: prod.id!, favor: false })}
+                  onClick={() => handleSectionClick({ id: prod.id! })}
                 >
                   {prod.name}
                 </p>
@@ -98,7 +105,7 @@ export default function CatalogPage() {
       <div className="body-flex">
         <div>
           <nav className="nav-left backcolor-darkgray">
-            <UserInfo />
+            <UserInfo handleClick={handleFavoriteClick} />
             <hr className="color-white" />
             <p className="color-white">Навигация</p>
             <hr className="color-white" />
@@ -112,9 +119,7 @@ export default function CatalogPage() {
                 <li>
                   <p
                     className="color-white hover-ligthorange"
-                    onClick={() =>
-                      updateProducts({ id: prod.id!, favor: false })
-                    }
+                    onClick={() => handleSectionClick({ id: prod.id! })}
                   >
                     {prod.name}
                   </p>

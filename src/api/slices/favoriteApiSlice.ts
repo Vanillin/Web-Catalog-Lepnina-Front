@@ -5,32 +5,32 @@ export type GetByUserFavoriteRequest = { idUser?: number };
 export type GetByUserFavoriteResponse = Favorite[];
 
 export type PostFavoriteRequest = Favorite;
-export type PostFavoriteResponse = Favorite;
+export type PostFavoriteResponse = { idUser?: number; idProduct?: number };
 
 export type DeleteFavoriteRequest = Favorite;
 export type DeleteFavoriteResponse = boolean;
 
 export const favoriteApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getPost: builder.query<Favorite, { id: number }>({
-      query: ({ id }) => `/post/${id}`,
-    }),
+    // getPost: builder.query<Favorite, { id: number }>({
+    //   query: ({ id }) => `/post/${id}`,
+    // }),
 
-    favoritesByUser: builder.query<
-      GetByUserFavoriteResponse,
-      { req: GetByUserFavoriteRequest }
-    >({
-      query: ({ req }) => ({
-        url: `/Favorite/${req.idUser}`,
-        method: "GET",
-      }),
-      providesTags: ["Favorite"],
-    }),
+    // favoritesByUser: builder.query<
+    //   GetByUserFavoriteResponse,
+    //   { req: GetByUserFavoriteRequest }
+    // >({
+    //   query: ({ req }) => ({
+    //     url: `/Favorite/${req.idUser}`,
+    //     method: "GET",
+    //   }),
+    //   providesTags: ["Favorite"],
+    // }),
 
     favoriteCreate: builder.mutation<PostFavoriteResponse, PostFavoriteRequest>(
       {
         query: () => ({
-          url: "/Favorite",
+          url: "/Favorites",
           method: "POST",
         }),
         invalidatesTags: ["Favorite"],
@@ -41,7 +41,7 @@ export const favoriteApiSlice = apiSlice.injectEndpoints({
       { req: DeleteFavoriteRequest }
     >({
       query: ({ req }) => ({
-        url: `/Favorite/${req.idUser}/${req.idProduct}`,
+        url: `/Favorites/${req.idUser}/${req.idProduct}`,
         method: "DELETE",
       }),
       invalidatesTags: ["Favorite"],
@@ -50,7 +50,7 @@ export const favoriteApiSlice = apiSlice.injectEndpoints({
 });
 
 export const {
-  useFavoritesByUserQuery,
+  // useFavoritesByUserQuery,
   useFavoriteCreateMutation,
   useFavoriteDeleteMutation,
 } = favoriteApiSlice;

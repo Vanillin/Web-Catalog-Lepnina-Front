@@ -26,7 +26,7 @@ export type DeleteProductResponse = boolean;
 
 export const productApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    productsBySection: builder.query<
+    productsBySection: builder.mutation<
       GetBySectionProductResponse,
       { req: GetBySectionProductRequest }
     >({
@@ -34,9 +34,9 @@ export const productApiSlice = apiSlice.injectEndpoints({
         url: `/Product/section/${req.id}`,
         method: "GET",
       }),
-      providesTags: ["Product"],
+      invalidatesTags: ["Product"],
     }),
-    productsByFavorite: builder.query<
+    productsByFavorite: builder.mutation<
       GetByFavoriteProductResponse,
       GetByFavoriteProductRequest
     >({
@@ -44,7 +44,17 @@ export const productApiSlice = apiSlice.injectEndpoints({
         url: "/Product/user",
         method: "GET",
       }),
-      providesTags: ["Product"],
+      invalidatesTags: ["Product"],
+    }),
+    productsByFavorite2: builder.query<
+      GetByFavoriteProductResponse,
+      GetByFavoriteProductRequest
+    >({
+      query: () => ({
+        url: "/Product/user",
+        method: "GET",
+      }),
+      providesTags: ["Section"],
     }),
     productsCreate: builder.mutation<AddProductResponse, AddProductRequest>({
       query: () => ({
@@ -77,8 +87,9 @@ export const productApiSlice = apiSlice.injectEndpoints({
 });
 
 export const {
-  useProductsBySectionQuery,
-  useProductsByFavoriteQuery,
+  useProductsBySectionMutation,
+  useProductsByFavoriteMutation,
+  useProductsByFavorite2Query,
   useProductsCreateMutation,
   useProductsUpdateMutation,
   useProductsDeleteMutation,

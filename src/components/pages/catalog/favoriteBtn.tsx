@@ -1,9 +1,11 @@
+import { Favorite } from "../../../api/models/favorite";
 import { Product } from "../../../api/models/product";
 import {
-  useFavoritesByUserQuery,
+  // useFavoritesByUserQuery,
   useFavoriteCreateMutation,
   useFavoriteDeleteMutation,
 } from "../../../api/slices/favoriteApiSlice";
+import { useProductsByFavorite2Query } from "../../../api/slices/productApiSlice";
 import { useUserInfoQuery } from "../../../api/slices/userApiSlice";
 
 function FavoriteBtn(input: { product: Product }) {
@@ -17,25 +19,24 @@ function FavoriteBtn(input: { product: Product }) {
   const productId = input.product.id;
 
   const {
-    data: favorites,
+    data: favoritesProduct,
     isLoading: isFavoritesLoading,
     error: favoritesError,
-  } = useFavoritesByUserQuery({
-    req: { idUser: userId },
-  });
+  } = useProductsByFavorite2Query({});
 
   const [addFavorite, { isLoading: isAdding }] = useFavoriteCreateMutation();
   const [removeFavorite, { isLoading: isRemoving }] =
     useFavoriteDeleteMutation();
 
-  const isFavorited = favorites?.some(
-    (f) => f.idProduct === productId && f.idUser === userId
-  );
+  const isFavorited = favoritesProduct?.some((f) => f.id === productId);
 
   const handleClick = async () => {
     if (!userId || isAdding || isRemoving) return;
 
-    const favorite = { idUser: userId, idProduct: productId };
+    let favorite: Favorite = {
+      idUser: userId,
+      idProduct: productId,
+    };
 
     try {
       if (isFavorited) {
@@ -53,7 +54,7 @@ function FavoriteBtn(input: { product: Product }) {
   }
 
   if (userError || favoritesError) {
-    return <p className="color-white">Ошибка загрузки</p>;
+    return <p className="color-white"></p>;
   }
 
   return (
@@ -62,11 +63,7 @@ function FavoriteBtn(input: { product: Product }) {
       onClick={handleClick}
       style={{ cursor: isAdding || isRemoving ? "wait" : "pointer" }}
     >
-      {isAdding || isRemoving
-        ? "⏳"
-        : isFavorited
-          ? "★ Удалить из избранного"
-          : "☆ В избранное"}
+      {isAdding || isRemoving ? "⏳" : isFavorited ? "★" : "☆"}
     </p>
   );
 }
