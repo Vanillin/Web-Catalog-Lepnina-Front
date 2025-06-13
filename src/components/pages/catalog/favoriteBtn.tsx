@@ -1,7 +1,6 @@
 import { Favorite } from "../../../api/models/favorite";
 import { Product } from "../../../api/models/product";
 import {
-  // useFavoritesByUserQuery,
   useFavoriteCreateMutation,
   useFavoriteDeleteMutation,
 } from "../../../api/slices/favoriteApiSlice";
@@ -57,15 +56,33 @@ function FavoriteBtn(input: { product: Product }) {
     return <p className="color-white"></p>;
   }
 
-  return (
-    <p
-      className="color-white"
-      onClick={handleClick}
-      style={{ cursor: isAdding || isRemoving ? "wait" : "pointer" }}
-    >
-      {isAdding || isRemoving ? "⏳" : isFavorited ? "★" : "☆"}
-    </p>
-  );
+  if (isAdding || isRemoving) {
+    return (
+      <p className="color-white" style={{ cursor: "wait" }}>
+        ⏳
+      </p>
+    );
+  } else if (isFavorited) {
+    return (
+      <p
+        className="color-orange"
+        onClick={handleClick}
+        style={{ cursor: "pointer" }}
+      >
+        ★
+      </p>
+    );
+  } else {
+    return (
+      <p
+        className="color-white"
+        onClick={handleClick}
+        style={{ cursor: "pointer" }}
+      >
+        ☆
+      </p>
+    );
+  }
 }
 
 export default FavoriteBtn;

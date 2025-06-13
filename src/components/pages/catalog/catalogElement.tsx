@@ -1,15 +1,25 @@
 import { Product } from "../../../api/models/product";
 import TestImg from "../../images/navigation/corner.png";
 import FavoriteBtn from "./favoriteBtn";
+import { usePictureFileGetQuery } from "../../../api/slices/pictureFileApiSlices";
 
 export default function CatalogElement(input: { prod: Product }) {
+  const { data: picture, isError } = usePictureFileGetQuery({
+    req: { idPicture: input.prod.idPicture },
+  });
+
+  let Img = TestImg;
+  if (!isError) {
+    Img = picture?.storedPath!;
+  }
+
   return (
     <div className="element-grid backcolor-darkgray">
       <div className="parameters-element color-white">
         <p>{input.prod.id}</p>
         <FavoriteBtn product={input.prod} />
       </div>
-      <img src={TestImg} alt="Изображение" />
+      <img src={Img} alt="Изображение" />
       <p className="color-orange">{input.prod.price} р.</p>
       <div className="parameters-element color-white">
         <p>Длина изделия</p>

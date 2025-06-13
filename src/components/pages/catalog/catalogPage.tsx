@@ -15,7 +15,7 @@ export function UserInfo(input: { handleClick: () => Promise<void> }) {
   if (isError) {
     return (
       <div>
-        <p className="color-white">Не авторизован</p>
+        <p className="color-white text">Не авторизован</p>
         <hr className="color-white" />
         <ul>
           <li>
@@ -34,7 +34,7 @@ export function UserInfo(input: { handleClick: () => Promise<void> }) {
   } else {
     return (
       <div>
-        <p className="color-white">{user?.name}</p>
+        <p className="color-white text">{user?.name}</p>
         <hr className="color-white" />
         <ul>
           <li>
@@ -88,7 +88,7 @@ export default function CatalogPage() {
       <nav className="nav-top backcolor-darkgray">
         <UserInfo handleClick={handleFavoriteClick} />
         <hr className="color-white" />
-        <p className="color-white">Навигация</p>
+        <p className="color-white text">Навигация</p>
         <hr className="color-white" />
         <div className="nav-top-body">
           <ul>
@@ -100,6 +100,7 @@ export default function CatalogPage() {
             {sections?.map((prod: Section) => (
               <li>
                 <p
+                  key={prod.id}
                   className="color-white hover-ligthorange"
                   onClick={() => handleSectionClick({ id: prod.id! })}
                 >
@@ -115,7 +116,7 @@ export default function CatalogPage() {
           <nav className="nav-left backcolor-darkgray">
             <UserInfo handleClick={handleFavoriteClick} />
             <hr className="color-white" />
-            <p className="color-white">Навигация</p>
+            <p className="color-white text">Навигация</p>
             <hr className="color-white" />
             <ul>
               <li>
@@ -138,7 +139,6 @@ export default function CatalogPage() {
           </nav>
         </div>
         <div className="grid" id="grid">
-          {/* {isLoading && <CircularProgress />} */}
           {products?.map((prod: Product) => (
             <CatalogElement key={prod.id} prod={prod} />
           ))}

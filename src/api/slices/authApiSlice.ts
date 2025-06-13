@@ -32,9 +32,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
           if (data.token) {
             localStorage.setItem("auth_token", data.token);
           }
-        } catch (error) {
-          console.error(error);
-        }
+        } catch (error) {}
       },
       invalidatesTags: ["User"],
     }),

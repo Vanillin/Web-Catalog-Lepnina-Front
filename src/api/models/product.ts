@@ -5,6 +5,6 @@ export type Product = {
   width?: number;
   price?: number;
   discount?: number;
-  pictureFileId?: number;
-  sectionId?: number;
+  idPicture?: number;
+  idSection?: number;
 };
