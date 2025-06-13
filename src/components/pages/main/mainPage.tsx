@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-//import { Button, Grid, Avatar, Typography } from '@mui/material';
 import backimage from "../../images/background-image.jpg";
 import navcorner from "../../images/navigation/corner.png";
 import navcornice from "../../images/navigation/cornice.png";
@@ -56,9 +55,13 @@ export default function MainPage() {
           <hr className="color-white" />
           <div className="menu flex-spacebetween">
             <p className="color-white">О нас</p>
-            <a className="color-white hover-ligthorange" href="#catalog">
+
+            <Link to="/catalog" className="color-white hover-ligthorange">
               Каталог
-            </a>
+            </Link>
+            {/* <a className="color-white hover-ligthorange" href="#catalog">
+              Каталог
+            </a> */}
             <p className="color-white">Контакты</p>
             <p className="color-white">Отзывы</p>
             {/* <!-- 
@@ -70,7 +73,7 @@ export default function MainPage() {
         </div>
       </header>
 
-{/*  <section id="review" className="screen backcolor-darkgray">
+      {/*  <section id="review" className="screen backcolor-darkgray">
 
         <button className="left-button-slide color-white" onclick="showPreviousSlide()" aria-label="Посмотреть предыдущий слайд">&lt;</button>
         <div className="elements-review flex-spacebetween backcolor-gray">
@@ -87,10 +90,10 @@ export default function MainPage() {
         <button className="right-button-slide color-white" onclick="showNextSlide()" aria-label="Посмотреть следующий слайд">&gt;</button>
         <script type="text/javascript" src="main/scripts/script-slider.js" ></script>
     </section> */}
-    
-      <section id="catalog">
+
+      {/* <section id="catalog">
         <div className="catalog">
-          <div >
+          <div>
             <div className="element-sections first-element backcolor-darkgray">
               <img src={navcornice} alt="Карнизы" />
               <p className="color-white">Карнизы</p>
@@ -109,14 +112,14 @@ export default function MainPage() {
             </div>
           </div>
           <div>
-            <div className="catalog-but backcolor-darkgray">              
+            <div className="catalog-but backcolor-darkgray">
               <p className="color-white">В каталог</p>
               <Link to="/catalog"></Link>
             </div>
           </div>
         </div>
-      </section>
-    
+      </section> */}
+
       {/* <section id="about-us" class="screen">
         <div class="about-us flex-spacebetween">
             <div class="text-section color-white">
@@ -139,26 +142,8 @@ export default function MainPage() {
             </li>
             <li>
               <Link to="/catalog" className="color-white hover-ligthorange">
-                Карнизы
+                Каталог
               </Link>
-            </li>
-            <li>
-              {/* <a className="color-white hover-ligthorange" href="moldings.html"> */}
-              Молдинги
-              {/* </a> */}
-            </li>
-            <li>
-              {/* <a
-                className="color-white hover-ligthorange"
-                href="designers.html"
-              > */}
-              Декоративные
-              {/* </a> */}
-            </li>
-            <li>
-              {/* <a className="color-white hover-ligthorange" href="corner.html"> */}
-              Угловые
-              {/* </a> */}
             </li>
           </ul>
         </div>

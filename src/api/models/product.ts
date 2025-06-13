@@ -1,13 +1,10 @@
-import { Section } from "./section";
-import { PictureFile } from "./pictureFile";
-
 export type Product = {
   id?: number;
   length?: number;
   height?: number;
-  wigth?: number;
+  width?: number;
   price?: number;
   discount?: number;
-  pictureFile?: PictureFile;
-  section?: Section;
+  idPicture?: number;
+  idSection?: number;
 };

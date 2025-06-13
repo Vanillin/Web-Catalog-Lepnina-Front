@@ -51,9 +51,14 @@ a {
   top: 16px;
 }
 
+.nav-left .text,
+.nav-top .text {
+  font-size: 2em;
+}
+
 .nav-left p,
 .nav-top p {
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 .nav-left a,
