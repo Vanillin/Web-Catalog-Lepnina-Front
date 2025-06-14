@@ -28,10 +28,7 @@ export const authApiSlice = apiSlice.injectEndpoints({
       }),
       async onQueryStarted(arg, { queryFulfilled }) {
         try {
-          const { data } = await queryFulfilled;
-          if (data.token) {
-            localStorage.setItem("auth_token", data.token);
-          }
+          await queryFulfilled;
         } catch (error) {}
       },
       invalidatesTags: ["User"],
