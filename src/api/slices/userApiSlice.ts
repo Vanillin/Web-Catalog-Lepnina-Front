@@ -4,7 +4,13 @@ import { User } from "../models/user";
 export type UserInfoRequest = any;
 export type UserInfoResponse = User;
 
-export type UpdateUserRequest = User;
+export type UpdateUserRequest = {
+  id?: number;
+  name?: string;
+  idIcon?: number;
+  email?: string;
+  password?: string;
+};
 export type UpdateUserResponse = boolean;
 
 export type DeleteUserRequest = { id?: number };
