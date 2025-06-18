@@ -29,6 +29,10 @@ a {
   text-decoration: none;
 }
 
+.body {
+  height: 100vh;
+}
+
 .screen {
   aspect-ratio: 2/1;
   position: relative;
@@ -157,10 +161,10 @@ header hr {
   margin-bottom: 5%;
   position: relative;
 }
-.catalog-but{
+.catalog-but {
   height: 50px;
   width: 150px;
-  position: absolute;  
+  position: absolute;
   left: 80%;
   top: 60%;
   border-radius: 20px;
@@ -188,21 +192,21 @@ header hr {
   border-width: 3px;
   border-radius: 25px;
 }
-.first-element{
+.first-element {
   top: 0%;
   left: 0%;
 }
-.second-element{
+.second-element {
   top: 13%;
   left: 20%;
 }
-.third-element{
+.third-element {
   top: 27%;
   left: 30%;
 }
-.four-element{
+.four-element {
   top: 40%;
-  left: 5%
+  left: 5%;
 }
 .element-sections > img {
   width: 100%;

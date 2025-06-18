@@ -8,7 +8,7 @@ import navmolding from "../../images/navigation/molding.png";
 
 export default function MainPage() {
   return (
-    <body id="top" className="backcolor-gray">
+    <div id="top" className="backcolor-gray body">
       <header>
         <img
           className="background-image screen"
@@ -187,6 +187,6 @@ export default function MainPage() {
       <div className="in-progress backcolor-darkgray">
         <p className="color-white">Сайт находится в разработке</p>
       </div>
-    </body>
+    </div>
   );
 }

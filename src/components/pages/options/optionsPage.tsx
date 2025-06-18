@@ -14,7 +14,7 @@ export default function OptionsPage() {
   };
 
   return (
-    <body className="backcolor-gray">
+    <div className="backcolor-gray body">
       <div className="body-flex">
         <div>
           <nav className="nav-left backcolor-darkgray">
@@ -49,6 +49,6 @@ export default function OptionsPage() {
           <ViewDetails user={user} idUnderPage={idUnderPage} />
         </div>
       </div>
-    </body>
+    </div>
   );
 }

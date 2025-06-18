@@ -32,7 +32,7 @@ export default function CatalogPage() {
   };
 
   return (
-    <body className="backcolor-gray">
+    <div className="backcolor-gray body">
       <nav className="nav-top backcolor-darkgray">
         <UserInfo handleClick={handleFavoriteClick} />
         <hr className="color-white" />
@@ -92,6 +92,6 @@ export default function CatalogPage() {
           ))}
         </div>
       </div>
-    </body>
+    </div>
   );
 }
