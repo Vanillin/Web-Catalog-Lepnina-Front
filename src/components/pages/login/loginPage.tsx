@@ -7,15 +7,15 @@ import {
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 
-const loginSchema = yup.object({
-  email: yup.string().required("Email is required").email("Invalid email"),
-  password: yup.string().required("Password is required"),
-});
-
 export default function LoginPage() {
   const navigate = useNavigate();
 
   const [login, { isLoading }] = useLoginMutation();
+
+  const loginSchema = yup.object({
+    email: yup.string().required("Email is required").email("Invalid email"),
+    password: yup.string().required("Password is required"),
+  });
 
   const initialValues: LoginRequest = {
     email: "",

@@ -13,11 +13,11 @@ export type GetForCatalogResponse = Product[];
 export type AddProductRequest = {
   length?: number;
   height?: number;
-  wigth?: number;
+  width?: number;
   price?: number;
   discount?: number;
-  pictureFile?: number;
-  section?: number;
+  idPicture?: number;
+  idSection?: number;
 };
 export type AddProductResponse = { id?: number };
 

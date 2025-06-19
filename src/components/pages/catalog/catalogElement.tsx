@@ -9,7 +9,7 @@ export default function CatalogElement(input: { prod: Product }) {
   });
 
   let Img = TestImg;
-  if (!isError) {
+  if (!isError || picture?.storedPath === undefined) {
     Img = picture?.storedPath!;
   }
 

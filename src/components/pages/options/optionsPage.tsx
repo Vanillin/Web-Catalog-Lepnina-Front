@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import ViewDetails from "./viewDetails";
+import UserDetails from "./userDetails";
+import AdminDetails from "./adminDetails";
+import { AdminOptions } from "./adminOptions";
 
 import { useUserInfoQuery } from "../../../api/slices/userApiSlice";
 
@@ -43,10 +45,12 @@ export default function OptionsPage() {
                 </Link>
               </li>
             </ul>
+            <AdminOptions handleSectionClick={handleSectionClick} user={user} />
           </nav>
         </div>
         <div>
-          <ViewDetails user={user} idUnderPage={idUnderPage} />
+          <UserDetails user={user} idUnderPage={idUnderPage} />
+          <AdminDetails user={user} idAdminUnderPage={idUnderPage} />
         </div>
       </div>
     </div>
