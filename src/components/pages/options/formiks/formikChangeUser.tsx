@@ -1,5 +1,5 @@
 import { Button, Grid, TextField } from "@mui/material";
-import { Form, Formik, ErrorMessage } from "formik";
+import { Form, Formik, ErrorMessage, Field } from "formik";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 
@@ -32,6 +32,7 @@ export default function FormikChangeUser(input: {
   });
 
   const handleSubmitUpdate = async (values: UpdateUserRequest) => {
+    console.log(values);
     await update(values);
     navigate("/options");
   };
@@ -53,7 +54,8 @@ export default function FormikChangeUser(input: {
       >
         {({ errors, touched }) => (
           <Form>
-            <TextField
+            <Field
+              as={TextField}
               name="name"
               placeholder="Your Name"
               type="name"
@@ -71,7 +73,8 @@ export default function FormikChangeUser(input: {
               disabled={isUpdate}
             /> */}
 
-            <TextField
+            <Field
+              as={TextField}
               name="password"
               placeholder="password"
               type="password"

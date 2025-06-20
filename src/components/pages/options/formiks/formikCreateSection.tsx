@@ -1,5 +1,5 @@
 import { Button, Grid, TextField } from "@mui/material";
-import { Form, Formik, ErrorMessage } from "formik";
+import { Form, Formik, ErrorMessage, Field } from "formik";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 
@@ -22,6 +22,7 @@ export default function FormikCreateSection() {
   });
 
   const handleSectionCreate = async (values: CreateSectionRequest) => {
+    console.log(values);
     await createSection(values);
     navigate("/options");
   };
@@ -43,7 +44,8 @@ export default function FormikCreateSection() {
       >
         {({ errors, touched }) => (
           <Form>
-            <TextField
+            <Field
+              as={TextField}
               name="name"
               placeholder="name"
               type="text"

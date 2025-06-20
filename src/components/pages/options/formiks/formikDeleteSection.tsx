@@ -1,5 +1,5 @@
 import { Button, Grid, TextField } from "@mui/material";
-import { Form, Formik, ErrorMessage } from "formik";
+import { Form, Formik, ErrorMessage, Field } from "formik";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 
@@ -21,6 +21,7 @@ export default function FormikDeleteSection() {
     id: yup.number().required("Id is required"),
   });
   const handleSectionDelete = async (values: DeleteSectionRequest) => {
+    console.log(values);
     await deleteSection(values);
     navigate("/options");
   };
@@ -42,7 +43,8 @@ export default function FormikDeleteSection() {
       >
         {({ errors, touched }) => (
           <Form>
-            <TextField
+            <Field
+              as={TextField}
               name="id"
               placeholder="id"
               fullWidth

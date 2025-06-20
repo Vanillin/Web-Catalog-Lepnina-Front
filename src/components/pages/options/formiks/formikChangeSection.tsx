@@ -1,5 +1,5 @@
 import { Button, Grid, TextField } from "@mui/material";
-import { Form, Formik, ErrorMessage } from "formik";
+import { Form, Formik, ErrorMessage, Field } from "formik";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 
@@ -21,6 +21,7 @@ export default function FormikChangeSection() {
     name: yup.string().required("Name is required"),
   });
   const handleSectionUpdate = async (values: UpdateSectionRequest) => {
+    console.log(values);
     await updateSection(values);
     navigate("/options");
   };
@@ -42,7 +43,8 @@ export default function FormikChangeSection() {
       >
         {({ errors, touched }) => (
           <Form>
-            <TextField
+            <Field
+              as={TextField}
               name="id"
               placeholder="id"
               fullWidth
@@ -50,7 +52,8 @@ export default function FormikChangeSection() {
               error={touched.id && !!errors.id}
               helperText={<ErrorMessage name="id" />}
             />
-            <TextField
+            <Field
+              as={TextField}
               name="name"
               placeholder="name"
               fullWidth

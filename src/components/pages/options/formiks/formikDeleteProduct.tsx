@@ -1,5 +1,5 @@
 import { Button, Grid, TextField } from "@mui/material";
-import { Form, Formik, ErrorMessage } from "formik";
+import { Form, Formik, ErrorMessage, Field } from "formik";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 
@@ -22,6 +22,7 @@ export default function FormikDeleteProduct() {
   });
 
   const handleProductDelete = async (values: DeleteProductRequest) => {
+    console.log(values);
     await deleteProduct(values);
     navigate("/options");
   };
@@ -43,7 +44,8 @@ export default function FormikDeleteProduct() {
       >
         {({ errors, touched }) => (
           <Form>
-            <TextField
+            <Field
+              as={TextField}
               name="id"
               placeholder="id"
               fullWidth

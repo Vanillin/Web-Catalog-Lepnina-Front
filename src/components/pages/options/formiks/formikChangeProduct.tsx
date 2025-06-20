@@ -1,5 +1,5 @@
 import { Button, Grid, TextField } from "@mui/material";
-import { Form, Formik, ErrorMessage } from "formik";
+import { Form, Formik, ErrorMessage, Field } from "formik";
 import * as yup from "yup";
 import { useNavigate } from "react-router-dom";
 
@@ -36,6 +36,7 @@ export default function FormikChangeProduct() {
   });
 
   const handleProductUpdate = async (values: UpdateProductRequest) => {
+    console.log(values);
     await updateProduct(values);
     navigate("/options");
   };
@@ -57,7 +58,8 @@ export default function FormikChangeProduct() {
       >
         {({ errors, touched }) => (
           <Form>
-            <TextField
+            <Field
+              as={TextField}
               name="id"
               placeholder="id"
               fullWidth
@@ -65,7 +67,8 @@ export default function FormikChangeProduct() {
               error={touched.id && !!errors.id}
               helperText={<ErrorMessage name="id" />}
             />
-            <TextField
+            <Field
+              as={TextField}
               name="length"
               placeholder="length"
               fullWidth
@@ -73,7 +76,8 @@ export default function FormikChangeProduct() {
               error={touched.length && !!errors.length}
               helperText={<ErrorMessage name="length" />}
             />
-            <TextField
+            <Field
+              as={TextField}
               name="height"
               placeholder="height"
               fullWidth
@@ -81,7 +85,8 @@ export default function FormikChangeProduct() {
               error={touched.height && !!errors.height}
               helperText={<ErrorMessage name="height" />}
             />
-            <TextField
+            <Field
+              as={TextField}
               name="width"
               placeholder="width"
               fullWidth
@@ -89,7 +94,8 @@ export default function FormikChangeProduct() {
               error={touched.width && !!errors.width}
               helperText={<ErrorMessage name="width" />}
             />
-            <TextField
+            <Field
+              as={TextField}
               name="price"
               placeholder="price"
               fullWidth
@@ -97,7 +103,8 @@ export default function FormikChangeProduct() {
               error={touched.price && !!errors.price}
               helperText={<ErrorMessage name="price" />}
             />
-            <TextField
+            <Field
+              as={TextField}
               name="discount"
               placeholder="discount"
               fullWidth
@@ -105,7 +112,8 @@ export default function FormikChangeProduct() {
               error={touched.discount && !!errors.discount}
               helperText={<ErrorMessage name="discount" />}
             />
-            <TextField
+            <Field
+              as={TextField}
               name="idPicture"
               placeholder="idPicture"
               fullWidth
@@ -113,7 +121,8 @@ export default function FormikChangeProduct() {
               error={touched.idPicture && !!errors.idPicture}
               helperText={<ErrorMessage name="idPicture" />}
             />
-            <TextField
+            <Field
+              as={TextField}
               name="idSection"
               placeholder="idSection"
               fullWidth
