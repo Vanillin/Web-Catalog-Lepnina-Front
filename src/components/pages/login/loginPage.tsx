@@ -28,54 +28,65 @@ export default function LoginPage() {
   };
 
   return (
-    <Grid container direction="column" spacing={2} width={300} margin="auto">
-      <h1>Login Page</h1>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={loginSchema}
-        onSubmit={handleSubmit}
+    <div className="backcolor-gray body login">
+      <Grid
+        className="backcolor-darkgray"
+        container
+        direction="column"
+        spacing={5}
+        width={320}
+        margin="auto"
+        padding={10}
+        borderRadius={10}
       >
-        {({ errors, touched }) => (
-          <Form>
-            <Field
-              as={TextField}
-              name="email"
-              label="Email"
-              placeholder="john@acme.com"
-              type="email"
-              fullWidth
-              margin="normal"
-              error={touched.email && !!errors.email}
-              helperText={<ErrorMessage name="email" />}
-              disabled={isLoading}
-            />
+        <h1>Login Page</h1>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={loginSchema}
+          onSubmit={handleSubmit}
+        >
+          {({ errors, touched }) => (
+            <Form>
+              <Field
+                as={TextField}
+                name="email"
+                label="Email"
+                placeholder="john@acme.com"
+                type="email"
+                fullWidth
+                margin="normal"
+                error={touched.email && !!errors.email}
+                helperText={<ErrorMessage name="email" />}
+                disabled={isLoading}
+              />
 
-            <Field
-              as={TextField}
-              name="password"
-              label="Password"
-              placeholder="Password"
-              type="password"
-              fullWidth
-              margin="normal"
-              error={touched.password && !!errors.password}
-              helperText={<ErrorMessage name="password" />}
-              disabled={isLoading}
-            />
+              <Field
+                as={TextField}
+                name="password"
+                label="Password"
+                placeholder="Password"
+                type="password"
+                fullWidth
+                margin="normal"
+                error={touched.password && !!errors.password}
+                helperText={<ErrorMessage name="password" />}
+                disabled={isLoading}
+              />
 
-            <Button
-              type="submit"
-              variant="contained"
-              color="primary"
-              fullWidth
-              disabled={isLoading}
-              style={{ marginTop: "1rem" }}
-            >
-              {isLoading ? "Logging in..." : "Login"}
-            </Button>
-          </Form>
-        )}
-      </Formik>
-    </Grid>
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                fullWidth
+                disabled={isLoading}
+                style={{ marginTop: "1rem" }}
+              >
+                {isLoading ? "Logging in..." : "Login"}
+              </Button>
+            </Form>
+          )}
+        </Formik>
+      </Grid>
+    </div>
   );
 }
