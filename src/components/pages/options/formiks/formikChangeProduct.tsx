@@ -36,7 +36,6 @@ export default function FormikChangeProduct() {
   });
 
   const handleProductUpdate = async (values: UpdateProductRequest) => {
-    console.log(values);
     await updateProduct(values);
     navigate("/options");
   };

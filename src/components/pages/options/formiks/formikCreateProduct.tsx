@@ -34,7 +34,6 @@ export default function FormikCreateProduct() {
   });
 
   const handleProductCreate = async (values: AddProductRequest) => {
-    console.log(values);
     await createProduct(values);
     navigate("/options");
   };

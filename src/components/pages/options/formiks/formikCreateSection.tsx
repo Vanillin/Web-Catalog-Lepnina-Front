@@ -22,7 +22,6 @@ export default function FormikCreateSection() {
   });
 
   const handleSectionCreate = async (values: CreateSectionRequest) => {
-    console.log(values);
     await createSection(values);
     navigate("/options");
   };

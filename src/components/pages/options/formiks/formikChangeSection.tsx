@@ -21,7 +21,6 @@ export default function FormikChangeSection() {
     name: yup.string().required("Name is required"),
   });
   const handleSectionUpdate = async (values: UpdateSectionRequest) => {
-    console.log(values);
     await updateSection(values);
     navigate("/options");
   };

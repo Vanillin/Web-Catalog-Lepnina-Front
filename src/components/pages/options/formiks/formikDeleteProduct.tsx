@@ -22,7 +22,6 @@ export default function FormikDeleteProduct() {
   });
 
   const handleProductDelete = async (values: DeleteProductRequest) => {
-    console.log(values);
     await deleteProduct(values);
     navigate("/options");
   };

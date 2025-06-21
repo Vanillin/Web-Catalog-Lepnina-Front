@@ -32,7 +32,6 @@ export default function FormikChangeUser(input: {
   });
 
   const handleSubmitUpdate = async (values: UpdateUserRequest) => {
-    console.log(values);
     await update(values);
     navigate("/options");
   };
