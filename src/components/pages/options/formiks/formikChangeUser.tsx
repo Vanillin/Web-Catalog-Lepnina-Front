@@ -1,25 +1,26 @@
 import { Button, Grid, TextField } from "@mui/material";
 import { Form, Formik, ErrorMessage, Field } from "formik";
 import * as yup from "yup";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { AdminOptions } from "../adminOptions";
 
-import { User } from "../../../../api/models/user";
 import {
   UpdateUserRequest,
   useUserUpdateMutation,
 } from "../../../../api/slices/userApiSlice";
+import { useUserInfoQuery } from "../../../../api/slices/userApiSlice";
 
-export default function FormikChangeUser(input: {
-  user: User | undefined | null;
-}) {
+export default function FormikChangeUser() {
+  const { data: user } = useUserInfoQuery({});
+
   const navigate = useNavigate();
   const [update, { isLoading: isUpdate }] = useUserUpdateMutation();
 
   const initialValuesUpdate: UpdateUserRequest = {
-    id: input.user?.id,
+    id: user?.id,
     idIcon: undefined,
-    name: input.user?.name,
-    email: input.user?.email,
+    name: user?.name,
+    email: user?.email,
     password: undefined,
   };
 
@@ -32,37 +33,70 @@ export default function FormikChangeUser(input: {
   });
 
   const handleSubmitUpdate = async (values: UpdateUserRequest) => {
-    await update(values);
-    navigate("/options");
+    let trigger = await update(values);
+    if (trigger?.data === true) navigate("/options");
   };
 
   return (
-    <Grid
-      container
-      direction="column"
-      spacing={5}
-      margin={5}
-      marginLeft={10}
-      width={300}
-    >
-      <h1>Изменить данные</h1>
-      <Formik
-        initialValues={initialValuesUpdate}
-        validationSchema={loginSchema}
-        onSubmit={handleSubmitUpdate}
-      >
-        {({ errors, touched }) => (
-          <Form>
-            <Field
-              as={TextField}
-              name="name"
-              placeholder="Your Name"
-              type="name"
-              fullWidth
-              disabled={isUpdate}
+    <div className="backcolor-gray body">
+      <div className="body-flex">
+        <div>
+          <nav className="nav-left backcolor-darkgray">
+            <p className="color-white">{user?.name}</p>
+            <hr className="color-white" />
+            <ul>
+              <li>
+                <Link to="/options/user/change" className="color-orange">
+                  Изменить данные
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/options/user/delete"
+                  className="color-white hover-ligthorange"
+                >
+                  Удалить аккаунт
+                </Link>
+              </li>
+              <li>
+                <Link to="/catalog" className="color-white hover-ligthorange">
+                  В каталог
+                </Link>
+              </li>
+            </ul>
+            <AdminOptions
+              //handleSectionClick={handleSectionClick}
+              user={user}
             />
+          </nav>
+        </div>
+        <div>
+          <Grid
+            container
+            direction="column"
+            spacing={5}
+            margin={5}
+            marginLeft={10}
+            width={300}
+          >
+            <h1>Изменить данные</h1>
+            <Formik
+              initialValues={initialValuesUpdate}
+              validationSchema={loginSchema}
+              onSubmit={handleSubmitUpdate}
+            >
+              {({ errors, touched }) => (
+                <Form>
+                  <Field
+                    as={TextField}
+                    name="name"
+                    placeholder="Your Name"
+                    type="name"
+                    fullWidth
+                    disabled={isUpdate}
+                  />
 
-            {/* <TextField
+                  {/* <TextField
               name="email"
               placeholder="Email@mail.ru"
               type="email"
@@ -72,28 +106,31 @@ export default function FormikChangeUser(input: {
               disabled={isUpdate}
             /> */}
 
-            <Field
-              as={TextField}
-              name="password"
-              placeholder="password"
-              type="password"
-              fullWidth
-              error={touched.password && !!errors.password}
-              helperText={<ErrorMessage name="password" />}
-              disabled={isUpdate}
-            />
+                  <Field
+                    as={TextField}
+                    name="password"
+                    placeholder="password"
+                    type="password"
+                    fullWidth
+                    error={touched.password && !!errors.password}
+                    helperText={<ErrorMessage name="password" />}
+                    disabled={isUpdate}
+                  />
 
-            <Button
-              variant="contained"
-              type="submit"
-              fullWidth
-              disabled={isUpdate}
-            >
-              {isUpdate ? "Изменение..." : "Изменить"}
-            </Button>
-          </Form>
-        )}
-      </Formik>
-    </Grid>
+                  <Button
+                    variant="contained"
+                    type="submit"
+                    fullWidth
+                    disabled={isUpdate}
+                  >
+                    {isUpdate ? "Изменение..." : "Изменить"}
+                  </Button>
+                </Form>
+              )}
+            </Formik>
+          </Grid>
+        </div>
+      </div>
+    </div>
   );
 }

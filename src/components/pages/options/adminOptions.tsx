@@ -1,10 +1,8 @@
+import { Link } from "react-router-dom";
 import { Roles } from "../../../api/models/roles";
 import { User } from "../../../api/models/user";
 
-export function AdminOptions(input: {
-  handleSectionClick: (id: number) => Promise<void>;
-  user: User | undefined | null;
-}) {
+export function AdminOptions(input: { user: User | undefined | null }) {
   if (
     input.user === undefined ||
     input.user === null ||
@@ -16,52 +14,52 @@ export function AdminOptions(input: {
       <ul>
         <hr className="color-white" />
         <li>
-          <p
+          <Link
+            to="/options/product/create"
             className="color-white hover-ligthorange"
-            onClick={() => input.handleSectionClick(10)}
           >
             Добавить продукт
-          </p>
+          </Link>
         </li>
         <li>
-          <p
+          <Link
+            to="/options/product/change"
             className="color-white hover-ligthorange"
-            onClick={() => input.handleSectionClick(11)}
           >
             Изменить продукт
-          </p>
+          </Link>
         </li>
         <li>
-          <p
+          <Link
+            to="/options/product/delete"
             className="color-white hover-ligthorange"
-            onClick={() => input.handleSectionClick(12)}
           >
             Удалить продукт
-          </p>
+          </Link>
         </li>
         <li>
-          <p
+          <Link
+            to="/options/section/create"
             className="color-white hover-ligthorange"
-            onClick={() => input.handleSectionClick(13)}
           >
             Добавить секцию
-          </p>
+          </Link>
         </li>
         <li>
-          <p
+          <Link
+            to="/options/section/change"
             className="color-white hover-ligthorange"
-            onClick={() => input.handleSectionClick(14)}
           >
             Изменить секцию
-          </p>
+          </Link>
         </li>
         <li>
-          <p
+          <Link
+            to="/options/section/delete"
             className="color-white hover-ligthorange"
-            onClick={() => input.handleSectionClick(15)}
           >
             Удалить секцию
-          </p>
+          </Link>
         </li>
       </ul>
     );
