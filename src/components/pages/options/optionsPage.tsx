@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { AdminOptions } from "./adminOptions";
 
 import { useUserInfoQuery } from "../../../api/slices/userApiSlice";
 
@@ -6,31 +7,7 @@ export default function OptionsPage() {
   const { data: user } = useUserInfoQuery({});
 
   return (
-    <body className="backcolor-gray">
-      <nav className="nav-top backcolor-darkgray">
-        <p className="color-white">{user?.name}</p>
-        <hr className="color-white" />
-        <p className="color-white">Настройки</p>
-        <hr className="color-white" />
-        <ul>
-          <li>
-            <p className="color-white hover-ligthorange">Изменить</p>
-          </li>
-          <li>
-            <p className="color-white hover-ligthorange"></p>
-          </li>
-        </ul>
-        <hr className="color-white" />
-        <div className="nav-top-body">
-          <ul>
-            <li>
-              <Link to="/catalog" className="color-white hover-ligthorange">
-                В каталог
-              </Link>
-            </li>
-          </ul>
-        </div>
-      </nav>
+    <div className="backcolor-gray body">
       <div className="body-flex">
         <div>
           <nav className="nav-left backcolor-darkgray">
@@ -38,7 +15,20 @@ export default function OptionsPage() {
             <hr className="color-white" />
             <ul>
               <li>
-                <p className="color-white hover-ligthorange">Изменить что-то</p>
+                <Link
+                  to="/options/user/change"
+                  className="color-white hover-ligthorange"
+                >
+                  Изменить данные
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/options/user/delete"
+                  className="color-white hover-ligthorange"
+                >
+                  Удалить аккаунт
+                </Link>
               </li>
               <li>
                 <Link to="/catalog" className="color-white hover-ligthorange">
@@ -46,10 +36,10 @@ export default function OptionsPage() {
                 </Link>
               </li>
             </ul>
+            <AdminOptions user={user} />
           </nav>
         </div>
-        <div></div>
       </div>
-    </body>
+    </div>
   );
 }

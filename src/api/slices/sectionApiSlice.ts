@@ -26,9 +26,10 @@ export const productApiSlice = apiSlice.injectEndpoints({
       CreateSectionResponse,
       CreateSectionRequest
     >({
-      query: () => ({
+      query: (args) => ({
         url: "/Section",
         method: "POST",
+        body: args,
       }),
       invalidatesTags: ["Section"],
     }),
@@ -36,9 +37,10 @@ export const productApiSlice = apiSlice.injectEndpoints({
       UpdateSectionResponse,
       UpdateSectionRequest
     >({
-      query: () => ({
+      query: (args) => ({
         url: "/Section",
         method: "PUT",
+        body: args,
       }),
       invalidatesTags: ["Section"],
     }),
@@ -46,9 +48,10 @@ export const productApiSlice = apiSlice.injectEndpoints({
       DeleteSectionResponse,
       DeleteSectionRequest
     >({
-      query: () => ({
+      query: (args) => ({
         url: "/Section",
         method: "DELETE",
+        body: args,
       }),
       invalidatesTags: ["Section"],
     }),

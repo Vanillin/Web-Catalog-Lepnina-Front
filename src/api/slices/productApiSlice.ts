@@ -13,11 +13,11 @@ export type GetForCatalogResponse = Product[];
 export type AddProductRequest = {
   length?: number;
   height?: number;
-  wigth?: number;
+  width?: number;
   price?: number;
   discount?: number;
-  pictureFile?: number;
-  section?: number;
+  idPicture?: number;
+  idSection?: number;
 };
 export type AddProductResponse = { id?: number };
 
@@ -60,9 +60,10 @@ export const productApiSlice = apiSlice.injectEndpoints({
     //   providesTags: ["Product"],
     // }),
     productsCreate: builder.mutation<AddProductResponse, AddProductRequest>({
-      query: () => ({
+      query: (args) => ({
         url: "/Product",
         method: "POST",
+        body: args,
       }),
       invalidatesTags: ["Product"],
     }),
@@ -70,9 +71,10 @@ export const productApiSlice = apiSlice.injectEndpoints({
       UpdateProductResponse,
       UpdateProductRequest
     >({
-      query: () => ({
+      query: (args) => ({
         url: "/Product",
         method: "PUT",
+        body: args,
       }),
       invalidatesTags: ["Product"],
     }),
@@ -80,9 +82,10 @@ export const productApiSlice = apiSlice.injectEndpoints({
       DeleteProductResponse,
       DeleteProductRequest
     >({
-      query: () => ({
+      query: (args) => ({
         url: "/Product",
         method: "DELETE",
+        body: args,
       }),
       invalidatesTags: ["Product"],
     }),

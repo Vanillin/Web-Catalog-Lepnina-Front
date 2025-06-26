@@ -4,7 +4,13 @@ import { User } from "../models/user";
 export type UserInfoRequest = any;
 export type UserInfoResponse = User;
 
-export type UpdateUserRequest = User;
+export type UpdateUserRequest = {
+  id?: number;
+  name?: string;
+  idIcon?: number;
+  email?: string;
+  password?: string;
+};
 export type UpdateUserResponse = boolean;
 
 export type DeleteUserRequest = { id?: number };
@@ -20,16 +26,18 @@ export const userApiSlice = apiSlice.injectEndpoints({
       providesTags: ["User"],
     }),
     userUpdate: builder.mutation<UpdateUserResponse, UpdateUserRequest>({
-      query: () => ({
+      query: (args) => ({
         url: "/User",
         method: "PUT",
+        body: args,
       }),
       invalidatesTags: ["User"],
     }),
     userDelete: builder.mutation<DeleteUserResponse, DeleteUserRequest>({
-      query: () => ({
+      query: (args) => ({
         url: "/User",
         method: "DELETE",
+        body: args,
       }),
       invalidatesTags: ["User"],
     }),
